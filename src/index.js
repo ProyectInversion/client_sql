@@ -1,15 +1,15 @@
 var express = require('express'),
     app = express(),
-    cors = require('cors');
+    cors = require('cors'),
+    routes = require('./Routes/routes');
 
-require('./Connection/conn_sql.js');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(cors());
 
-//app.use('/api-ninieras',routes);
+app.use('/cliente_sql',routes);
 
 var port = process.env.PORT || 9900;
 

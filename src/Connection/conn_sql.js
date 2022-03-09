@@ -11,14 +11,11 @@ const config =
     } 
 };
 
-const connection = sql.connect(config, function (err) {
-    if(err)
-        console.log(err);
-    else
-        console.log("Connected");  
+const get_connection = async () => 
+{
+    const connection = await sql.connect(config);
+    return connection;
+}
 
-});
+module.exports = {get_connection};
 
-const conn = connection;
-
-module.exports = conn;
