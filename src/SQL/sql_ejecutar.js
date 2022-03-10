@@ -8,9 +8,13 @@ const ejecutar_sentencia = async (req,res) =>
     {
         var conn = await get_connection();
 
-        var pool = await conn.request().query(req.body.consulta);
+        var pool = await conn.request();
 
-        query.result = pool.recordset;    
+        req.body.parameters_in.forEach((e) => pool.input(e.parameter, e.value))
+
+        let res = await pool.query(req.body.consulta);
+
+        query.result = res.recordset;    
     } catch (error) 
     {
         query.mesage = error;
@@ -35,10 +39,10 @@ const ejecutar_sp = async (req,res) =>
 
         let out = res.output;
         let tabla = res.recordsets.length > 0 ? res.recordsets : res.recordset;
-        query.result = { out, tabla }
+        query.result = { out, tabla: tabla }
+        
     } catch (error) 
     {
-        console.log(error);
         query.message = error;
         query.status = false;
     }
