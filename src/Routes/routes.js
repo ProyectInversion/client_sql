@@ -3,6 +3,7 @@ const sql = require('../SQL/sql_ejecutar')
 
 const router = Router();
 
-router.post('/get_personas', sql.ejecutar_sentencia)
+router.post('/basic_query', sql.ejecutar_sentencia)
+router.post('/sp', sql.ejecutar_sp)
 
 module.exports = router;
