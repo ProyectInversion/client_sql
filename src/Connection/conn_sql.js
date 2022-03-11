@@ -17,5 +17,7 @@ const get_connection = async () =>
     return connection;
 }
 
+//docker exec -it db_inversion /opt/mssql-tools/bin/sqlcmd -S sql_server -U sa -P bruja12345# -i /run/desktop/mnt/host/c/ejecutar.sql
+
 module.exports = {get_connection};
 

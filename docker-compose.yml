@@ -13,6 +13,8 @@ services:
   sql_server:
     container_name: db_inversion
     image: mcr.microsoft.com/mssql/server
+    volumes:
+      - C:/SQL_CONTAINER/:/run/desktop/mnt/host/c/
     environment:
       SA_PASSWORD: bruja12345#
       ACCEPT_EULA: bruja
