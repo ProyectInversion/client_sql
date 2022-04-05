@@ -33,7 +33,11 @@ const ejecutar_sp = async (req,res) =>
         var pool = await conn.request();
         
         req.body.parameters_in.forEach((e) => pool.input(e.parameter, e.value))
-        req.body.parameters_out.forEach((e) => pool.output(e.parameter))
+        
+        if (req.body.parameters_out.length > 0) 
+        {
+            req.body.parameters_out.forEach((e) => pool.output(e.parameter))
+        }
         
         let res = await pool.execute(req.body.name_sp);
 

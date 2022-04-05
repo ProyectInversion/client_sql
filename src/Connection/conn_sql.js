@@ -2,8 +2,8 @@ const sql = require("mssql");
 const config = 
 {
     user: 'sa',
-    password: 'bruja12345#',
-    server: 'sql_server', 
+    password: 'Ax12345678',
+    server: '147.182.200.45', 
     database: 'db_inversion',
     options: {
         encrypt: true,
