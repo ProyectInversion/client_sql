@@ -1,10 +1,13 @@
 const sql = require("mssql");
-const config = 
+const config = require("../Utils/config");
+
+const connect = 
 {
-    user: 'sa',
-    password: 'Ax12345678',
-    server: '147.182.200.45', 
-    database: 'db_inversion',
+    user: config.USER_DB,
+    password: config.PASSWORD_DB,
+    server: config.SERVER_DB, 
+    database: config.DEFAULT_DB,
+    port: config.PORT_DB,
     options: {
         encrypt: true,
         trustServerCertificate: true
@@ -13,7 +16,7 @@ const config =
 
 const get_connection = async () => 
 {
-    const connection = await sql.connect(config);
+    const connection = await sql.connect(connect);
     return connection;
 }
 

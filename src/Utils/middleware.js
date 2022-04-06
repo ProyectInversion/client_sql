@@ -1,13 +1,22 @@
+const config = require('./config');
 
 const inyection_sql = async (req,res,next) => 
 {
-
-    if(req.originalUrl == '/cliente_sql/basic_query')
+    if(req.headers.authorization != undefined)
     {
-        
+        if(req.headers.authorization != config.AUTH)
+        {
+            res.status(401).send('Sin autorización')
+        }
+        else
+        {
+            next();
+        }
     }
-
-    next();
+    else
+    {
+        res.status(401).send('Sin autorización')
+    }    
 
 }
 
