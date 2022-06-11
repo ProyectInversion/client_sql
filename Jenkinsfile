@@ -6,7 +6,11 @@ pipeline
     {
         stage('Start')
         {
-            steps { echo 'Inicio' }
+            steps 
+            {
+                sh 'docker exec -it jenkins bash' 
+                echo 'Inicio' 
+            }
         }
 
         stage('Build')
