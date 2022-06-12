@@ -8,7 +8,6 @@ pipeline
         {
             steps 
             {
-                sh 'docker exec -it jenkins bash' 
                 echo 'Inicio' 
             }
         }
