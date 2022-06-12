@@ -4,9 +4,10 @@ pipeline
 
     environment
     {
-        name_container = 'containerClienteSql'
-        name_image = 'api_cliente_sql'
-        port_expose = 8000
+        name_container  = 'containerClienteSql'
+        name_image      = 'api_cliente_sql'
+        port_expose     = 8000
+        port            = 9900
     }
     
     stages
@@ -38,7 +39,7 @@ pipeline
         {
             steps
             {
-                sh  'docker run --name ${name_container} -dp ${port_expose}:9900 ${name_image}'
+                sh  'docker run --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
             }
         }
 
