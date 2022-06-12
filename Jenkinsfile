@@ -2,7 +2,7 @@ pipeline
 {
     agent any
 
-    enviroment
+    environment
     {
         name_container = 'containerClienteSql'
         name_image = 'api_cliente_sql'
