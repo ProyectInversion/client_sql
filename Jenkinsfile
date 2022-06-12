@@ -27,6 +27,13 @@ pipeline
             }
         }
 
+        stage('Delete')
+        {
+            steps 
+            {
+                sh 'docker rm -f ${name_container}'
+            }
+        }
         stage('Up')
         {
             steps
