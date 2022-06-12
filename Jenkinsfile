@@ -2,6 +2,13 @@ pipeline
 {
     agent any
 
+    enviroment
+    {
+        name_container = 'containerClienteSql'
+        name_image = 'api_cliente_sql'
+        port_expose = 8000
+    }
+    
     stages
     {
         stage('Start')
@@ -16,7 +23,7 @@ pipeline
         {
             steps 
             {
-                sh 'docker build -t api_cliente_sql .'
+                sh 'docker build -t ${name_image} .'
             }
         }
 
@@ -24,7 +31,7 @@ pipeline
         {
             steps
             {
-                sh  'docker run --name containerClienteSql -dp 8000:9900 api_cliente_sql'
+                sh  'docker run --name ${name_container} -dp ${port_expose}:9900 ${name_image}'
             }
         }
 
