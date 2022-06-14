@@ -12,18 +12,11 @@ pipeline
     
     stages
     {
-        stage('Start')
-        {
-            steps 
-            {
-                echo 'Inicio' 
-            }
-        }
-
         stage('Build')
         {
             steps 
             {
+                echo 'Inicio' 
                 sh 'docker build -t ${name_image} .'
             }
         }
@@ -40,12 +33,8 @@ pipeline
             steps
             {
                 sh  'docker run --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
+                echo 'Successfull.'
             }
-        }
-
-        stage('End')
-        {
-            steps { echo 'Successfull.' }
         }
     }
 
