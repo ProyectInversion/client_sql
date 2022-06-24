@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: apis
+spec: 
+  selector:
+    matchLabels:
+      app: apis-prueba
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apis-prueba
+    spec:
+      containers:
+      - name: client-sql
+        image: api-cliente-sql
+        ports:
+        - containerPort: 9900
+        env:
+        - name: HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+          name: AUTH_BASIC
+          valueFrom:
+            configMapKeyRef:
+              name: config-api           # The ConfigMap this value comes from.
+              key: auth_basic # The key to fetch.
+        imagePullPolicy: Never

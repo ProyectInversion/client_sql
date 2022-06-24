@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-api
+  namespace: default # nodo
+  resourceVersion: "0.0.1"
+data:
+  dev: 'true'
+  auth_basic: 'Auth asasasa'

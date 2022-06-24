@@ -21,3 +21,5 @@ app.listen(port,(err) =>
         console.log('conectado al puerto: ',port)
     }
 );
+console.log(process.env.HOST);
+console.log(process.env.AUTH_BASIC);

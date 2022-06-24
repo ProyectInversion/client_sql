@@ -13,4 +13,5 @@ COPY src ./
 EXPOSE 9900
 
 CMD ["npm", "run", "dev"]
+#ENTRYPOINT ["npm start", 'index.js']
 

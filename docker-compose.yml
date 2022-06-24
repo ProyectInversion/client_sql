@@ -1,22 +1,24 @@
-version: '2.2'
+version: '3.2'
 services:
   cliente_sql: 
-    container_name: node
+    #container_name: node
+    image: node:14
     restart: always
     build: .
     depends_on:
       - sql_server
     ports:
       - 5000:9900
-    volumes: 
-      - .:/usr/src/app
+    deploy:
+      replicas: 2  
   sql_server:
-    container_name: db_inversion
+    #container_name: db_inversion
     image: mcr.microsoft.com/mssql/server
     environment:
       SA_PASSWORD: bruja12345#
       ACCEPT_EULA: bruja
     logging:
       driver: none
+    
     
     
