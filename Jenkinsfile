@@ -41,10 +41,10 @@ pipeline
     post 
     {
         success {
-            slackSend channel: '#pruebas', color: 'green', message: "Build deployed successfully - ${name_container}"
+            slackSend channel: '#pruebas', color: 'success', message: "Build deployed successfully - ${name_container}"
         }
         failure{
-            slackSend channel: '#pruebas', color: 'green', message: "Build deployed failuer - ${name_container}"
+            slackSend channel: '#pruebas', color: 'danger', message: "Build deployed failure - ${name_container}"
         }
     }
 
