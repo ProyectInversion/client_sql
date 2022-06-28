@@ -36,13 +36,15 @@ pipeline
                 echo 'Successfull.'
             }
         }
-        post {
-            success {
-                slackSend "Build deployed successfully - ${name_container}"
-            }
-            failure{
-                slackSend "Build deployed failer - ${name_container}"
-            }
+        
+    }
+    post 
+    {
+        success {
+            slackSend "Build deployed successfully - ${name_container}"
+        }
+        failure{
+            slackSend "Build deployed failer - ${name_container}"
         }
     }
 
