@@ -5,14 +5,14 @@ pipeline
     environment
     {
         name_container  = 'containerClienteSql'
-        name_image      = 'api_cliente_sql'
+        name_image      = 'api-cliente-sql'
         port_expose     = 8000
         port            = 9900
     }
     
     stages
     {
-        stage('Build')
+        stage('Build-Image')
         {
             steps 
             {
@@ -20,20 +20,21 @@ pipeline
                 sh 'docker build -t ${name_image} .'
             }
         }
-
-        stage('Delete')
-        {
-            steps 
-            {
-                sh 'docker rm -f ${name_container}'
-            }
-        }
-        stage('Up')
+        stage('Kube-Deployment')
         {
             steps
             {
-                sh  'docker run --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
-                echo 'Successfull.'
+                sh 'eval $(minikube -p minikube docker-env)'
+                sh 'kubectl apply -f kube-deployment.yaml'
+                echo 'Successfull deployment'
+            }
+        }
+        stage('Kube-Service')
+        {
+            steps
+            {
+                sh 'kubectl apply -f kube-serviceLB.yaml'
+                echo 'Successfull service'
             }
         }
         
