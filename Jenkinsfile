@@ -24,7 +24,6 @@ pipeline
         {
             steps
             {
-                sh 'eval $(minikube -p minikube docker-env)'
                 sh 'kubectl apply -f kube-deployment.yaml'
                 echo 'Successfull deployment'
             }
