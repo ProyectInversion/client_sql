@@ -29,7 +29,7 @@ pipeline
         {
             steps
             {
-                sh 'kubectl apply -f kube-deployment.yaml'
+                sh 'docker rm -f ${name_container}'
                 echo 'Successfull deployment'
             }
         }
@@ -37,12 +37,13 @@ pipeline
         {
             steps
             {
-                sh 'kubectl apply -f kube-serviceLB.yaml'
+                sh 'docker rum --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
                 echo 'Successfull service'
             }
         }
         
     }
+    /*
     post 
     {
         success {
@@ -52,5 +53,5 @@ pipeline
             slackSend channel: '#pruebas', color: 'danger', message: "Build deployed failure - ${name_container}"
         }
     }
-
+    */
 }
