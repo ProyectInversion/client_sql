@@ -1,10 +1,11 @@
-pipeline 
-{
-    node {
+node {
         load "$JENKINS_HOME/envs/envs_prueba"
         echo "${APP}"
         echo "${TIPO}"
     }
+pipeline 
+{
+    
     agent any
 
     environment
