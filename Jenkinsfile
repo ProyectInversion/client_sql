@@ -1,7 +1,7 @@
 node {
         load "$JENKINS_HOME/envs/envs_prueba"
-        echo "${APP}"
-        echo "${TIPO}"
+        echo "${env.APP}"
+        echo "${env.TIPO}"
     }
 pipeline 
 {
