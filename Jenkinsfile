@@ -10,7 +10,7 @@ pipeline
 
     environment
     {
-        name_container  = 'containerClienteSql'
+        name_container  = 'container_cliente_sql'
         name_image      = 'api-cliente-sql'
         port_expose     = 8000
         port            = 9900
@@ -38,7 +38,7 @@ pipeline
         {
             steps
             {
-                sh 'docker rum --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
+                sh 'docker run --name ${name_container} -dp ${port_expose}:${port} ${name_image}'
                 echo 'Successfull service'
             }
         }
