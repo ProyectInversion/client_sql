@@ -1,5 +1,5 @@
 node {
-        load "$JENKINS_HOME/envs/envs_prueba"
+        load "$JENKINS_HOME/envs/.envs_prueba"
         echo "${env.APP}"
         echo "${env.TIPO}"
     }
